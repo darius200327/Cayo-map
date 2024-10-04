@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cayo Perico Interactive Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        const map = L.map('map', {
+            crs: L.CRS.Simple,
+            minZoom: -5,
+        }).setView([0, 0], 0);
+
+        // Dimensions of the image
+        const imageWidth = 593;  // Replace with your image width in pixels
+        const imageHeight = 595; // Replace with your image height in pixels
+        const bounds = [[0, 0], [imageHeight, imageWidth]];
+
+        // Add the image overlay
+        L.imageOverlay('./CayoPerico.png', bounds).addTo(map);
+
+        // Set the map bounds to the image
+        map.setMaxBounds(bounds);
+
+        // Marker 1
+L.marker([ 471.2955140534883, 221.90989251040355]).addTo(map)
+    .bindPopup(`
+        <b>Depozit</b><br>
+        <img src="image1.jpg" alt="Image 1" width="150" height="100"><br>
+        Description for Marker 1.
+    `);
+    // Marker 2
+L.marker([ 434.5174105710908, 402.21735766348075]).addTo(map)
+    .bindPopup(`
+        <b>Crack</b><br>
+        <img src="image2.jpg" alt="Image 2" width="150" height="100"><br>
+        Description for Marker 2.
+    `);
+     // Marker 3
+L.marker([416.5300221066362, 390.58676615805393]).addTo(map)
+    .bindPopup(`
+        <b>Craft arme</b><br>
+        <img src="image3.jpg" alt="Image 3" width="150" height="100"><br>
+        Description for Marker 3.
+    `);
+     // Marker 4
+L.marker([449.27974419215116, 374.86137407053553]).addTo(map)
+    .bindPopup(`
+        <b>Spital Nemarcat 1</b><br>
+        <img src="image3.jpg" alt="Image 3" width="150" height="100"><br>
+        Description for Marker 3.
+    `);
+    // Marker 5
+L.marker([361.402756983851, 393.0870413633756]).addTo(map)
+    .bindPopup(`
+        <b>Loc de intalnire</b><br>
+        <img src="image3.jpg" alt="Image 3" width="150" height="100"><br>
+        Description for Marker 3.
+    `);
+    // Marker 6
+L.marker([350.38624030159605, 401.74281269654625]).addTo(map)
+    .bindPopup(`
+        <b>Vama</b><br>
+        <img src="image3.jpg" alt="Image 3" width="150" height="100"><br>
+        Description for Marker 3.
+    `);
+    // Marker 7
+L.marker([302.68846011722314, 403.96898673606074]).addTo(map)
+    .bindPopup(`
+        <b>Craft atasamente/Spalare de Bani</b><br>
+        <img src="image3.jpg" alt="Image 3" width="150" height="100"><br>
+        Description for Marker 3.
+    `);
+    
+map.on('click', function(e) {
+    const coords = e.latlng;
+    console.log(`Coordinates: ${coords.lat}, ${coords.lng}`);
+    alert(`Coordinates: ${coords.lat}, ${coords.lng}`);
+});
+
+    </script>
+</body>
+</html>
